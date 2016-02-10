@@ -1,4 +1,4 @@
-Lab - Paths and Review
+Lab - Output, Download and Uncompress
 ==========
 Follow the instructions line-by-line.  
 
@@ -7,96 +7,280 @@ Follow the instructions line-by-line.
 * "No output" or "nothing happens" are valid answers to any of the questions.
 ==========
 
-==========
-Feel free to use your workstation to test your answers to the questions that don't explicitly tell you to run a command)
-==========
-==========
-1. Write the command that you would use to change to the root directory.
-----------
-/
-
 
 ==========
-2. Write the command that you would use to change to your home directory.
-----------
-~
-
-
+We're going to be echoing stuff to the console and cleaning it up.
 ==========
-3. Write the command that you would use to change to your Desktop folder.
-----------
-cd Desktop/
-
-
 ==========
-4. What's the absolute path to your home directory?
-----------
-/Users/Student
+1. Type:
 
+$ echo hello
 
-==========
-5. What's the absolute path to your Desktop directory?
-----------
-/Users/Student/Desktop
-
-
-==========
-6. What's the absolute path to your Desktop directory?
-----------
-/Users/Student/Desktop
-
-
-==========
-7. If you're in your home directory, what's the relative path to your Desktop directory?
-----------
-cd student/Desktop
-
-==========
-8. If you're in your home directory, how would you create a new directory on your desktop called stuff without changing your directory?  Write your command below.
+Copy and paste the output below.
 ----------
 
-mkdir stuff
+hello
 
 ==========
-9. If you're in your root directory, how would you create a new directory on your desktop called more-stuff without changing your directory?  Write your command below.
+2. Type:
+
+$ echo hello there
+
+Copy and paste the output below.
 ----------
 
-mkdir more stuff
+hello there
 
 ==========
-10. If you're in your Desktop directory, how would you create a new directory on your desktop called even-more-stuff?  Write your command below.
-----------
-mkdir even more stuff
+3. Type:
 
+$ echo good mornin'
 
-==========
-11. If you're in your home directory, how would you change to the directory right above it using a relative path (it should bring you to /Users)?  Write your command below.
+Copy and paste the output below.
 ----------
 
-cd ..
+nothing happened
 
 ==========
-12. If you're in your Desktop directory, how would you change to two directories right above it (again, this should be /Users) using a relative path?  Write your command below.
+4. Uh-oh... we're stuck!
+
+Type [CTRL + C] to get your prompt back.
 ----------
 
-cd ../..
+ent-v314-002:mystuff student$ 
 
 ==========
-13. What's the shortcut for changing to the directory that you were just previously in?  For example, if I were in /Volumes... and I changed to /Users/profesor/Desktop, what's a quick way of changing to /Volumes without writing something like cd /Volumes?
-----------
--
-==========
-14. How would you show all of the files (including hidden ones) with detailed (long) information that are on you're Desktop if you're in your home directory?  Write your command below.
-----------
-ls -alt
-==========
-Optional Challenge:
+5. Say good mornin' again with quotes!
 
-a. Create the following directory structure on...
-b. A folder called my-stuff should be on your desktop.  There should be two additional directories within it: archived, current.
-c. Determine the name of your computer.
-d. Create another directory in my-stuff that's the same name as your computer.
-e. Determine which folder in my-stuff was created most recently by using ls.  (there are some flags that help with this).
-f. Remove that folder.
-g. Show all of the commands that you used to complete the above exercise.  (for example, how did you determine which folder in my-stuff was the most recent?).  Use the command: history ... to help you remember what you did!  Paste the commands below.
+$ echo "good mornin'"
+
+Copy and paste the output below.
+----------
+
+good mornin'
+
+==========
+6. There are some other symbols that have special meanings if you don't quote them.  For example, > brings up a different prompt.  Try *.
+
+$ echo *
+
+What happens?
+----------
+archived current
+
+
+==========
+7. Ok... that's a lot of output.  How do we clean up our screen so that it's empty again?
+
+Write the command that you used below:
+----------
+
+clear
+
+==========
+We're going to practice downloading files from a web site.  We'll use this practice to download more lab materials!
+==========
+==========
+8. Now let's try downloading a file from a web site.  Type in the URL *exactly* as is: google.com.
+
+$ curl google.com
+
+Copy and paste the output below.
+----------
+
+<HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">
+<TITLE>301 Moved</TITLE></HEAD><BODY>
+<H1>301 Moved</H1>
+The document has moved
+<A HREF="http://www.google.com/">here</A>.
+</BODY></HTML>
+
+
+==========
+9. And again.  This time, add www to the URL.
+
+$ curl www.google.com
+
+Copy and paste the output below, but not the whole thing!  Just copy up to the part that has the title tags (<title>......</title>).
+----------
+
+<TITLE>301 Moved</TITLE>
+
+==========
+10. That's great, but what if I want to save the file?  What flag/option and option argument would I use to download the page to a file called google.html?  Run it to download the URL www.google.com.
+
+Write the command you used below.  Also copy and paste the output below.
+----------
+
+Command: curl -o google.html www.google.com
+Output:  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  151k    0  151k    0     0   947k      0 --:--:-- --:--:-- --:--:--  953k
+
+==========
+11. Now let's download the lab file for this homework.  First, figure out what directory you're in.
+
+Write the command you used to determine your directory.  Also, copy and paste the output below.
+----------
+Command: pwd
+Output: /Users/student/mystuff
+
+==========
+12. If you're not in your home directory, change to it (use the shortcut).
+
+Write the command that you used to change to your home directory.  If you were already in your home directory, write the command that you *would* have used to change to it!
+----------
+
+cd ~
+
+==========
+13. So... the lab materials are located at this url:
+
+http://foureyes.github.io/mtec1002-spring2014/labs/02/mtec1002-lab-02.zip
+
+Download the file using curl... to a file called mtec1002-lab-02.zip using the commandline.  
+
+REMEMBER to use the -o flag, and follow it with a .zip extension! 
+
+Use ls to verify that it downloaded.
+
+Write down the command that you used to download the file below.  Additionally, write the output of the command below.
+----------
+Command: curl -o mtec1003-lab-02.zip http://foureyes.github.io/mtec1002-spring2014/labs/02/mtec1002-lab-02.zip
+Output:   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  935k  100  935k    0     0   874k      0  0:00:01  0:00:01 --:--:--  875k
+
+==========
+14. We learned a command to uncompress a .zip file.  Use it to extract the files and folders from the file you just downloaded.
+
+Write down the command that you used to uncompress the file.
+----------
+
+unzip mtec1003-lab-02.zip
+
+==========
+15. Change to the directory that was just created.  List the contents (of the directory that was extracted from the labs .zip file). 
+
+Copy and paste the output below.
+----------
+
+books	logs	web
+
+==========
+We're going to mess around with archiving and compressing files.  We'll make a directory with a file in it... archive and compress it.... and uncompress it elsewhere.
+==========
+==========
+16. Go back up to your home directory.  Create a directory called stuff.  List the contents of your home directory to prove that the directory was created.
+
+Copy and paste the output below.
+----------
+
+Applications		Pictures		mtec1002-lab-02
+Desktop			Public			mtec1003
+Documents		Sites			mtec1003-lab-02.zip
+Downloads		Things			mystuff
+Library			VirtualBox VMs		stuff
+Movies			__MACOSX		vms
+Music			junk.jpg
+My Song.band		juunk.jpg
+
+
+==========
+17. Change into the "stuff" directory that you just created.  Run the following command (we haven't learned this exact command yet, but we will in the next lab!) exactly as described below:
+
+$ echo "hi" > hello.txt
+
+List the files in the directory you're currently in (which should be stuff).  
+
+Copy and paste the output below.
+----------
+
+hello.txt
+
+==========
+18. Go up one directory back into your home directory.  Run the following commands exactly to create a compressed archive of the stuff folder.
+
+$ tar -cvf stuff.tar stuff
+
+Copy and paste the output below.
+----------
+
+a stuff
+a stuff/hello.txt
+==========
+19. List the files in the directory you're currently in (which should be home).  
+
+Copy and paste the output below. (It should contain stuff.tar)
+----------
+
+Applications		Pictures		mtec1002-lab-02
+Desktop			Public			mtec1003
+Documents		Sites			mtec1003-lab-02.zip
+Downloads		Things			mystuff
+Library			VirtualBox VMs		stuff
+Movies			__MACOSX		stuff.tar
+Music			junk.jpg		vms
+My Song.band		juunk.jpg
+==========
+20. Now compress it!  Type:
+
+gzip stuff.tar
+
+List your files again.... you should have a new file with a .gz extension.  Copy and paste the output of your this below.
+----------
+
+Applications		Pictures		mtec1002-lab-02
+Desktop			Public			mtec1003
+Documents		Sites			mtec1003-lab-02.zip
+Downloads		Things			mystuff
+Library			VirtualBox VMs		stuff
+Movies			__MACOSX		stuff.tar.gz
+Music			junk.jpg		vms
+My Song.band		juunk.jpg
+
+
+==========
+21. Move stuff.tar.gz into the lab directory that we downloaded.  We didn't learn this command yet, so just type in exactly as is:
+
+$ mv stuff.tar.gz mtec1002-lab-02 
+
+MAKE SURE YOU MOVE THE FILE THAT ENDS IN .gz!
+
+Change your directory to mtec1002-lab-02.  
+
+List the files.  Copy and paste the output below (stuff.tar.gz should be there).
+----------
+books		logs		stuff.tar.gz	web
+
+==========
+22. You should be in the lab directory.  Let's uncompress the file.
+
+$ tar -xvf stuff.tar.gz
+
+List the files.  Copy and paste the output below (the folder, stuff, should be there).
+----------
+
+books		logs		stuff		stuff.tar.gz	web
+
+==========
+23. Go back to your home directory
+[No output]
+----------
+
+
+
+==========
+24. Download and uncompress this file using curl and tar -xvf in your home directory:
+
+http://foureyes.github.io/mtec1002/labs/02/secret.tar.gz
+
+REMEMBER to use the -o flag and specifiy a filenmae that ends in .tar.gz
+
+Write out the commands that you used to do this.
+----------
+
+curl -o mtec1002-lab-02-secrets.tar.gz http://foureyes.github.io/mtec1002/labs/02/secret.tar.gz
+==========
+25. How many files were in the archive.  What were their names?  Write out your answers below.
 ----------
